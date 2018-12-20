@@ -12,6 +12,7 @@ namespace DocumentSegmentation
 {
     public class Parser
     {
+        // it actually removes all the headings from the content 
         public Article GetArticle(Uri url)
         {
             using (WebClient web = new WebClient())
@@ -65,6 +66,19 @@ namespace DocumentSegmentation
             HtmlNode hepsNode = HtmlNode.CreateNode("<script>" + text + "</script>");
             var body = document.DocumentNode.SelectSingleNode("//body");
             body.AppendChild(hepsNode);
+        }
+
+
+        // save web page and using AgilityPack download the stylesheets too
+        public void DownloadPage(string url)
+        {
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\contents\index.html");
+
+
+            using (WebClient client = new WebClient())
+            {
+                client.DownloadFile(url, path);
+            }
         }
     }
 }

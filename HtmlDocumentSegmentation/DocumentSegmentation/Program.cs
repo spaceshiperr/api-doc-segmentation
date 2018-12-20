@@ -13,7 +13,7 @@ namespace DocumentSegmentation
     {
         static void Main(string[] args)
         {
-            var url = new Uri("https://www.kernel.org/doc/html/latest/kernel-hacking/hacking.html#introduction");
+            var url = new Uri("https://vk.com/dev/upload_files");
 
             var parser = new Parser();
             var article = parser.GetArticle(url);
@@ -22,6 +22,8 @@ namespace DocumentSegmentation
 
             FileStream sw = new FileStream("index.html", FileMode.Create);
             document.Save(sw);
+
+            //parser.DownloadPage(url.ToString());
         }
     }
 }
