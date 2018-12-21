@@ -80,5 +80,30 @@ namespace DocumentSegmentation
                 client.DownloadFile(url, path);
             }
         }
+
+        //public void InsertMissingHeadings(HtmlDocument currDoc, HtmlDocument prevDoc)
+        //{
+        //    var prevDocNode = prevDoc.DocumentNode;
+        //    var currDocNode = currDoc.DocumentNode;
+        //    foreach (HtmlNode node in prevDocNode.ChildNodes)
+        //    {
+        //        currDocNode.SelectNodes(node);
+        //    }
+        //}
+
+        //private void CheckNode(HtmlDocument currDoc, HtmlDocument prevDoc)
+        //{
+        //    foreach (HtmlNode n in node.ChildNodes)
+        //    {
+        //        if (n.HasChildNodes)
+        //        {
+        //            //CheckNode(n);
+        //        }
+        //        else
+        //        {
+        //            Console.WriteLine(n.InnerText);
+        //        }
+        //    }
+        //}
     }
 }
