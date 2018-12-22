@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using HtmlAgilityPack;
-using Newtonsoft.Json;
 
 namespace DocumentSegmentation
 {
@@ -23,7 +20,8 @@ namespace DocumentSegmentation
             FileStream sw = new FileStream("index.html", FileMode.Create);
             document.Save(sw);
 
-            //parser.DownloadPage(url.ToString());
+            //var entries = parser.GetConsoleLogs(new Uri("https://www.tutorialspoint.com/fsharp/fsharp_sequences.htm"));
+            var entries = parser.GetConsoleLogs(new Uri("file:///D:/Info/Documents/spaceshiperr/Github/api-doc-segmentation/HtmlDocumentSegmentation/DocumentSegmentation/bin/Debug/index.html"));
         }
     }
 }

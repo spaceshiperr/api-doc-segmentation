@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using HtmlAgilityPack;
 using System.IO;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 
 namespace DocumentSegmentation
 {
@@ -66,6 +66,19 @@ namespace DocumentSegmentation
             HtmlNode hepsNode = HtmlNode.CreateNode("<script>" + text + "</script>");
             var body = document.DocumentNode.SelectSingleNode("//body");
             body.AppendChild(hepsNode);
+        }
+
+        public List<LogEntry> GetConsoleLogs(Uri url)
+        {
+            var options = new ChromeOptions();
+            options.SetLoggingPreference(LogType.Browser, LogLevel.All);
+
+            var driver = new ChromeDriver(options);
+            driver.Navigate().GoToUrl(url);
+
+            var entries = driver.Manage().Logs.GetLog(LogType.Browser).ToList();
+
+            return entries;
         }
 
 
